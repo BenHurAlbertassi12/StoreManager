@@ -11,3 +11,6 @@ app.get('/', (_request, response) => {
 // você pode registrar suas rotas normalmente, como o exemplo acima
 // você deve usar o arquivo index.js para executar sua aplicação 
 module.exports = app;
+
+// opitei por fazer a aplicação completamente em portugues pois 
+// durante a mentoria de hoje cedo (13/01) foi comentado sobre o o asunto
