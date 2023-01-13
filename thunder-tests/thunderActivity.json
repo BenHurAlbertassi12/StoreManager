@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "4a0f11ec-77d6-414a-85d0-9d88b012fbaf",
+    "colId": "history",
+    "containerId": "",
+    "name": "https://localhost:",
+    "url": "https://localhost:",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-01-13T18:54:40.660Z",
+    "modified": "2023-01-13T18:54:40.660Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
