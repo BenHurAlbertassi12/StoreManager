@@ -1,0 +1,12 @@
+const mysql = require('mysql2/promise');
+
+const connection = mysql.createPool({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  port: process.env.MYSQL_PORT,
+});
+
+module.exports = connection;
+
+// conection com base na mentoria --- CHSD024 - MSC do zero --- 6 min de video
