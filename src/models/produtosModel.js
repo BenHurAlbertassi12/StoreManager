@@ -6,8 +6,17 @@ const getAll = async () => {
   return employees;
 };
 
+const create = async ({ name }) => {
+  const query = 'INSERT INTO StoreManager.products (name) VALUE (?)';
+  const [novoProduto] = await connection.execute(query, [name]);
+  return novoProduto.insertId;
+};
+
 module.exports = {
   getAll,
+  create,
 };
 
 // --- CHSD024 - MSC do zero--- tempo aproximado 24:15
+
+// linha 10 --- 39:26 --- retirei do banco de dados seed.sql na linha 11
