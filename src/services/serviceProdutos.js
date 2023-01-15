@@ -12,19 +12,19 @@ const productsSchema = Joi.object({
 // };
 
   const findAll = async () => {
-    const produtos = model.getAll();
+    const produtos = await model.getAll(); // mano não acredito que esta droga estava sem o await -,-
     return {
       type: null, message: produtos,
   }; 
   };
   
 const serviceGetById = async (id) => {
-  const resultProduto = model.modelGetById(Number(id));
-  if (!resultProduto) return { type: 'error', message: 'Product not found' };
-    return {
-      type: null, message: resultProduto,
-  };
-  };
+  const result = await model.modelGetById(Number(id));
+
+  if (!result) return { type: 'error', message: 'Product not found' };
+
+  return { type: null, message: result };
+};
 
 const controllerCreate = async (name) => {
   const { error } = productsSchema.validate(name);
@@ -49,3 +49,4 @@ module.exports = {
 // if (error) throw { status:400, message: error.message }
 
 // Implementando a função createPassenger ---  retirado para a função de criar
+// Implementando a função findbyid ---  retirado para a função de criar

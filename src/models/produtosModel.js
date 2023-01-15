@@ -10,8 +10,7 @@ const getAll = async () => {
 
 const modelGetById = async (id) => {
   const [[result]] = await conn.execute(
-    `
-    SELECT * FROM StoreManager.products WHERE id = ?`,
+    'SELECT * FROM StoreManager.products WHERE id = ?',
     [id],
   );
 
