@@ -1,12 +1,12 @@
 const express = require('express');
 const { controller } = require('../controllers');
-// const { nameValidate } = require('../middlewares/produtos.valudator');
+const { validator } = require('../middlewares/produtos.valudator');
 
 const router = express.Router();
 
 router.get('/', controller.findAll);
 router.get('/:id', controller.controllerGetById);
-router.post('/', controller.controllerCreate);
+router.post('/', validator, controller.controllerCreate);
 
 module.exports = router;
 

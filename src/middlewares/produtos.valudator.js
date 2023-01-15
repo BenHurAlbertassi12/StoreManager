@@ -1,30 +1,17 @@
-const nomeInvalido = {
-  error: {
-    code: '"name" is required',
-  },
-};
+const validator = (req, res, next) => {
+  const { name } = req.body;
 
-const tamanhoInvalido = {
-  error: {
-    code: '"name" length must be at least 5 characters long',
-  },
-};
+  if (!name) {
+    return res.status(400).json({ message: '"name" is required' });
+  }
 
-const validator = {
-  validatorProduto: (req, res, next) => {
-    const { name } = req.body;
-    if (!name) {
-      return res.status(400).json(nomeInvalido);
-    }
+  if (name.length <= 4) {
+    return res
+      .status(422)
+      .json({ message: '"name" length must be at least 5 characters long' });
+  }
 
-    if (name.length < 5) {
-      return res
-        .status(422)
-        .json(tamanhoInvalido);
-    }
-
-    next();
-  },
+  next();
 };
 
 module.exports = {
