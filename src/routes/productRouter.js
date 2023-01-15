@@ -1,18 +1,12 @@
 const express = require('express');
-const { produtos } = require('../controllers');
-// const { nameValidate } = require('../middlewares/productsValidations');
+const { controller } = require('../controllers');
+// const { nameValidate } = require('../middlewares/produtos.valudator');
 
 const router = express.Router();
 
-router.get('/', produtos.findAll);
-
-// router.get('/:id', produtos.findAllById);
-
-// router.post('/', nameValidate, produtos.createProduct);
-
-// router.put('/:id', nameValidate, produtos.updateProduct);
-
-// router.delete('/:id', produtos.delProduct);
+router.get('/', controller.findAll);
+router.get('/:id', controller.controllerGetById);
+router.post('/', controller.controllerCreate);
 
 module.exports = router;
 
