@@ -1,3 +1,3 @@
-const service = require('./serviceVenda');
+const service = require('./serviceProdutos');
 
 module.exports = { service };

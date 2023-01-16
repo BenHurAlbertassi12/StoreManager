@@ -1,4 +1,5 @@
 const { service } = require('../services');
+const errorMap = require('../middlewares/errorMap');
 
   const findAll = async (_req, res) => {
     const { type, message } = await service.findAll();
@@ -27,10 +28,21 @@ const controllerCreate = async (req, res) => {
   res.status(201).json(message);
 };
 
+const controllerUP = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const { type, message } = await service.startTravel({ id, name });
+
+  if (type) return res.status(errorMap.mapError(type)).json({ message });
+
+  res.status(200).json(message);
+};
+
 module.exports = {
   findAll,
   controllerGetById,
   controllerCreate,
+  controllerUP,
 };
 
 // controller trabalha diretamente com a recepção e a resposta

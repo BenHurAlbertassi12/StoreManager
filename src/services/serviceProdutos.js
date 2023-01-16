@@ -35,7 +35,20 @@ const controllerCreate = async (name) => {
   return { type: null, message: novoId };  
 };
 
+const upItem = async ({ itemId, itemNome }) => {
+  const result = await model.modelGetById(Number(itemId));
+
+  if (!result) return { type: 'error', message: 'Product not found' };
+
+  await model.updateById(itemId, itemNome);
+
+  const attItem = await model.modelGetById(itemId);
+
+  return { type: null, message: attItem };
+};
+
 module.exports = {
+  upItem,
   findAll,
   controllerCreate,
   serviceGetById,
@@ -50,3 +63,8 @@ module.exports = {
 
 // Implementando a função createPassenger ---  retirado para a função de criar
 // Implementando a função findbyid ---  retirado para a função de criar
+
+// coigo do update tbm retirado da aula
+
+// https://github.com/tryber/msc-architecture-trybecar/tree/simple-application-controller-live-lectures
+// repositório utilizado na aula e utilizado neste projeto (adapatado)

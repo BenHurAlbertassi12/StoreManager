@@ -1,3 +1,4 @@
+// const snakeize = require('snakeize');
 const conn = require('./connection');
 
 const getAll = async () => {
@@ -23,7 +24,15 @@ const novoItemId = async (name) => {
   return insertId;
 };
 
+const updateById = async (name, id) => {
+  const query = 'UPDATE StoreManager.products SET name = ?, quantity = ? WHERE id = ? ';
+  const upId = await conn
+    .execute((query), [name, id]);
+  return upId;
+};
+
 module.exports = {
+  updateById,
   getAll,
   modelGetById,
   novoItemId,
