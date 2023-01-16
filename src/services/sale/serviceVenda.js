@@ -1,8 +1,8 @@
 const Joi = require('joi');
-const { model } = require('../models/vendas.index');
+const { model } = require('../../models/vendas.index');
 
 const productsSchema = Joi.object({
-  name: Joi.string().min(5).required(),
+  vendas: Joi.string().min(5).required(),
 });
 
 const findAll = async () => {
@@ -20,11 +20,11 @@ const serviceGetById = async (id) => {
   return { type: null, message: result };
 };
 
-const controllerCreate = async (name) => {
-  const { error } = productsSchema.validate(name);
+const controllerCreate = async (vendas) => {
+  const { error } = productsSchema.validate(vendas);
   if (error.type) return error;
 
-  const novoItId = await model.novoItemId(name);
+  const novoItId = await model.novoItemId(vendas);
   const novoId = await model.modelGetById(novoItId);
   return { type: null, message: novoId };
 };
