@@ -31,7 +31,7 @@ const controllerCreate = async (req, res) => {
 const controllerUP = async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
-  const { type, message } = await service.startTravel({ id, name });
+  const { type, message } = await service.upItem(id, name);
 
   if (type) return res.status(errorMap.mapError(type)).json({ message });
 

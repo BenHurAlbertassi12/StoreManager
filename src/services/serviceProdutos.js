@@ -21,7 +21,7 @@ const productsSchema = Joi.object({
 const serviceGetById = async (id) => {
   const result = await model.modelGetById(Number(id));
 
-  if (!result) return { type: 'error', message: 'Product not found' };
+  if (!result) return { type: 'INVALID_VALUE', message: 'Product not found' };
 
   return { type: null, message: result };
 };
@@ -35,14 +35,14 @@ const controllerCreate = async (name) => {
   return { type: null, message: novoId };  
 };
 
-const upItem = async ({ itemId, itemNome }) => {
-  const result = await model.modelGetById(Number(itemId));
+const upItem = async (id, name) => {
+  const result = await model.modelGetById(id);
 
-  if (!result) return { type: 'error', message: 'Product not found' };
+  if (!result) return { type: 'DRIVER_NOT_FOUND', message: 'Product not found' };
 
-  await model.updateById(itemId, itemNome);
+  await model.updateById(id, name);
 
-  const attItem = await model.modelGetById(itemId);
+  const attItem = await model.modelGetById(id);
 
   return { type: null, message: attItem };
 };

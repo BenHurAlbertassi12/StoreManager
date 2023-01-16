@@ -19,15 +19,14 @@ const modelGetById = async (id) => {
 };
 
 const novoItemId = async (name) => {
-  const [{ insertId }] = await conn
-    .execute('INSERT INTO StoreManager.products (name) VALUE (?)', [name]);
+  const query = 'INSERT INTO StoreManager.products (name) VALUE (?)';
+  const [{ insertId }] = await conn.execute(query, [name]);
   return insertId;
 };
 
 const updateById = async (name, id) => {
-  const query = 'UPDATE StoreManager.products SET name = ?, quantity = ? WHERE id = ? ';
-  const upId = await conn
-    .execute((query), [name, id]);
+  const query = 'UPDATE StoreManager.products SET name = ? WHERE id = ?';
+  const upId = await conn.execute((query), [id, name]);
   return upId;
 };
 
