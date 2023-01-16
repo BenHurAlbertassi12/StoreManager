@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 const rotaProduto = require('./routes/productRouter');
-// const rotaVenda = require('./routes/rotaVenda');
+const rotaVenda = require('./routes/rotaVenda');
 // exportando a rota
 
 // não remova esse endpoint, é para o avaliador funcionar
@@ -14,7 +14,7 @@ app.get('/', (_request, response) => {
 });
 
 app.use('/products', rotaProduto);
-// app.use('/sales', rotaVenda);
+app.use('/sales', rotaVenda);
 // definido a rota
 
 // não remova essa exportação, é para o avaliador funcionar
