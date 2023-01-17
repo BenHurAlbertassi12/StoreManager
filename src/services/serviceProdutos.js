@@ -47,7 +47,19 @@ const upItem = async (id, name) => {
   return { type: null, message: attItem };
 };
 
+const removeById = async (id) => {
+  const itemId = await model.modelGetById(id);
+
+  if (!itemId) return { type: 'DRIVER_NOT_FOUND', message: 'Product not found' };
+
+  await model.modelRemove(id);
+  
+  return {};
+};
+// console.log('estou auiiiiiiiiiiiii', removeById());
+
 module.exports = {
+  removeById,
   upItem,
   findAll,
   controllerCreate,

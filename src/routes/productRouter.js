@@ -8,6 +8,7 @@ router.get('/', controller.findAll);
 router.get('/:id', controller.controllerGetById);
 router.post('/', validator, controller.controllerCreate);
 router.put('/:id', validator, controller.controllerUP);
+router.delete('/:id', controller.controllerRemove);
 
 module.exports = router;
 

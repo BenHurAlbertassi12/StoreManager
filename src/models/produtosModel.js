@@ -10,12 +10,12 @@ const getAll = async () => {
 };
 
 const modelGetById = async (id) => {
-  const [[result]] = await conn.execute(
+  const [result] = await conn.execute(
     'SELECT * FROM StoreManager.products WHERE id = ?',
     [id],
   );
 
-  return result;
+  return result[0];
 };
 
 const novoItemId = async (name) => {
@@ -30,7 +30,15 @@ const updateById = async (name, id) => {
   return upId;
 };
 
+const modelRemove = async (id) => {
+  const query = 'DELETE FROM StoreManager.products WHERE id = ?';
+
+  const itemId = await conn.execute((query), [id]);
+  return itemId;
+};
+
 module.exports = {
+  modelRemove,
   updateById,
   getAll,
   modelGetById,
