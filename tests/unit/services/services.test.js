@@ -45,6 +45,11 @@ describe('Verificando service Produtos', function () {
       expect(error.message).to.deep.equal(produtos);
     });
 
+    describe('service test 4', async function () {
+      const response = await service.upItem(upProduto)
+      expect(response).to.have.property('UPDATE')
+    })
+
 
   afterEach(function () {
     sinon.restore();
