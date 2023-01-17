@@ -28,6 +28,22 @@ describe('Teste de unidade do controller', function () {
       expect(res.status).to.have.been.calledWith(200);
       expect(res.json).to.have.been.calledWith(produtos);
     });
+
+    it('cadastro de novo produto', async function () {
+      const res = {};
+      const req = {body: produtos};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+
+      sinon
+        .stub(service, 'controllerCreate')
+        .resolves({ type: null, message: produtos });
+      
+      await controller.controllerCreate(req, res);
+      expect(res.status).to.have.been.calledWith(201);
+      expect(res.json).to.have.been.calledWith(produtos);
+    });
   });
 });
 
