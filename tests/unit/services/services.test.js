@@ -23,6 +23,17 @@ describe('Verificando service Produtos', function () {
       expect(error.message).to.deep.equal(produtos);
     });
 
+    it('esta falhando ao tentar iniciar uma viagem com motorista ocupado', async function () {
+      sinon.stub(model, 'modelGetById').resolves(produtos);
+      // sinon.stub(driveDB, 'findById').resolves(undefined);
+
+      // const body = { travelId: 1, driverId: 99999 };
+      const error = await service.serviceGetById();
+
+      expect(error.type).to.equal(null);
+      expect(error.message).to.deep.equal(produtos);
+    });
+
   afterEach(function () {
     sinon.restore();
   });
