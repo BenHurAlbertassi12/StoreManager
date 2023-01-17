@@ -12,8 +12,8 @@ const { produtos, upProduto, createProduto } = require('../mock/mock');
 
 describe('Teste de unidade do controller', function () {
 
-  describe('Buscando as viagens em aberto', function () {
-    it('quando não tem nenhuma viagem cadastrada retorna um array vazio', async function () {
+  describe('Buscando itens', function () {
+    it('quando não tem nenhuma item cadastrado retorna um array vazio', async function () {
       const res = {};
       const req = {};
 
