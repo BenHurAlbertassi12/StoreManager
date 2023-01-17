@@ -4,6 +4,7 @@ const sinon = require('sinon');
 const { model } = require("../../../src/models");
 const connection = require("../../../src/models/connection");
 const { service } = require('../../../src/services');
+const { validator } = require("../../../src/middlewares/produtos.valudator");
 
 const { produtos, upProduto, createProduto } = require('../mock/mock');
 
@@ -22,8 +23,18 @@ describe('Verificando service Produtos', function () {
       expect(error.type).to.equal(null);
       expect(error.message).to.deep.equal(produtos);
     });
+    
+        it("cadastro con nome valido", async function () {
+          sinon.stub(model, "novoItemId").resolves([{ insertId: 1 }]);
+          sinon.stub(model, "modelGetById").resolves(produtos[0]);
+    
+          const result = await service.controllerCreate(validator);
+    
+          expect(result.type).to.equal(null);
+          expect(result.message).to.deep.equal(produtos[0]);
+        });
 
-    it('esta falhando ao tentar iniciar uma viagem com motorista ocupado', async function () {
+    it('busca id', async function () {
       sinon.stub(model, 'modelGetById').resolves(produtos);
       // sinon.stub(driveDB, 'findById').resolves(undefined);
 
@@ -33,6 +44,7 @@ describe('Verificando service Produtos', function () {
       expect(error.type).to.equal(null);
       expect(error.message).to.deep.equal(produtos);
     });
+
 
   afterEach(function () {
     sinon.restore();
