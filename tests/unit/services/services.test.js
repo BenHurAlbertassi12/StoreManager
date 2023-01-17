@@ -13,7 +13,7 @@ const { produtos, upProduto, createProduto } = require('../mock/mock');
 describe('Verificando service Produtos', function () {
 
   describe('Atribuições de viagem com erros de id inexistente', function () {
-    it('estão falhando ao tentar atribuir uma viagem com viajante inexistente', async function () {
+    it('service test 1', async function () {
       
       sinon.stub(model, "getAll").resolves(produtos);
 
@@ -24,7 +24,7 @@ describe('Verificando service Produtos', function () {
       expect(error.message).to.deep.equal(produtos);
     });
     
-        it("cadastro con nome valido", async function () {
+    it("service test 2", async function () {
           sinon.stub(model, "novoItemId").resolves([{ insertId: 1 }]);
           sinon.stub(model, "modelGetById").resolves(produtos[0]);
     
@@ -34,7 +34,7 @@ describe('Verificando service Produtos', function () {
           expect(result.message).to.deep.equal(produtos[0]);
         });
 
-    it('busca id', async function () {
+    it('service test 3', async function () {
       sinon.stub(model, 'modelGetById').resolves(produtos);
       // sinon.stub(driveDB, 'findById').resolves(undefined);
 

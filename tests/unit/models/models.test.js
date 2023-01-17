@@ -8,7 +8,7 @@ const { produtos, upProduto, createProduto } = require('../mock/mock');
 
 describe('Testes de unidade do model de produtos', function () {
 
-  it('Busca a partir do seu id', async function () {
+  it('model 1', async function () {
 
     sinon.stub(connection, 'execute').resolves([{ insertId: 42 }]);
 
@@ -17,7 +17,7 @@ describe('Testes de unidade do model de produtos', function () {
     expect(result).to.equal(42);
   });
 
-  it('Busca a partir do seu id', async function () {
+  it('model 2', async function () {
 
     sinon.stub(connection, 'execute').resolves([[produtos[0]]]);
 
@@ -26,7 +26,7 @@ describe('Testes de unidade do model de produtos', function () {
     expect(result).to.be.deep.equal(produtos[0]);
   });
 
-  it('Realizando uma operação getAll com o model produtos', async function () {
+  it('model 3', async function () {
 
     sinon.stub(connection, 'execute').resolves([produtos]);
 

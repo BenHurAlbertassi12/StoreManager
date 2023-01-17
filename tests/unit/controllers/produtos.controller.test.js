@@ -13,7 +13,7 @@ const { produtos, upProduto, createProduto } = require('../mock/mock');
 describe('Teste de unidade do controller', function () {
 
   describe('Buscando itens', function () {
-    it('quando não tem nenhuma item cadastrado retorna um array vazio', async function () {
+    it('controller 1', async function () {
       const res = {};
       const req = {};
 
@@ -29,7 +29,7 @@ describe('Teste de unidade do controller', function () {
       expect(res.json).to.have.been.calledWith(produtos);
     });
 
-    it('cadastro de novo produto', async function () {
+    it('controller 2', async function () {
       const res = {};
       const req = {body: produtos};
 
@@ -45,7 +45,7 @@ describe('Teste de unidade do controller', function () {
       expect(res.json).to.have.been.calledWith(produtos);
     });
 
-    it('retorno status', async function () {
+    it('controller 3', async function () {
       const res = {};
       const req = { params: { id: 4 } };
 
