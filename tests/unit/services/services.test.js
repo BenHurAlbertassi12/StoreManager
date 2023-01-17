@@ -10,7 +10,7 @@ const { produtos, upProduto, createProduto } = require('../mock/mock');
 
 // const DRIVER_ON_THE_WAY = 2;
 
-describe('Verificando service Produtos', function () {
+describe('services', function () {
 
   describe('Atribuições de viagem com erros de id inexistente', function () {
     it('service test 1', async function () {
@@ -37,22 +37,28 @@ describe('Verificando service Produtos', function () {
     it('service test 3', async function () {
       sinon.stub(model, 'modelGetById').resolves(produtos);
       // sinon.stub(driveDB, 'findById').resolves(undefined);
-
+      
       // const body = { travelId: 1, driverId: 99999 };
       const error = await service.serviceGetById();
-
+      
       expect(error.type).to.equal(null);
       expect(error.message).to.deep.equal(produtos);
     });
 
-    describe('service test 4', async function () {
-      const response = await service.upItem(upProduto)
-      expect(response).to.have.property('UPDATE')
-    })
+    it('service test 4', async function () {
 
+
+      sinon.stub(model, 'modelGetById').resolves({});
+      sinon.stub(model, 'updateById').resolves(upProduto);
+
+      const response = await service.upItem(upProduto);
+
+      expect(response).to.be.deep.equal({type: null, message: {}});
+    });
 
   afterEach(function () {
     sinon.restore();
   });
 });
+
 });
