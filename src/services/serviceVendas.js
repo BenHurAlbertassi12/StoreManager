@@ -16,6 +16,4 @@ solicitacao: async () => {
     return vendas;
   },
 };
-module.exports = {
-  serviceVendas,
-};
+module.exports = serviceVendas;

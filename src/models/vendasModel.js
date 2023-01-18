@@ -1,13 +1,19 @@
-const { conn } = require('./connection');
+const conn = require('./connection');
 
-const queryFind = `Select sp.sale_id, sales.date, sp.product_id, sp.quantity
-      FROM StoreManager.sales AS sales
-      INNER JOIN StoreManager.sales_products AS sp on sales.id = sp.sale_id;`;
+const queryFind = `Select b.sale_id, 
+    a.date, 
+    b.product_id, 
+    b.quantity
+    FROM StoreManager.sales AS a
+    INNER JOIN StoreManager.sales_products AS b on a.id = b.sale_id;`;
 
-const queryById = `Select sales.date, sp.product_id, sp.quantity
-      FROM StoreManager.sales AS sales
-      INNER JOIN StoreManager.sales_products AS sp on sale.id = sp.sale_id
-      WHERE sp.sale_id = ?`;
+const queryById = `Select a.date, 
+      b.product_id, 
+      b.quantity
+      FROM StoreManager.sales AS a
+      INNER JOIN StoreManager.sales_products AS b 
+      on a.id = b.sale_id
+      WHERE b.sale_id = ?`;
 
 const vendasModel = {
   
@@ -22,6 +28,4 @@ findById: async (id) => {
   },
   };
 
-module.exports = {
-  vendasModel,
-};
+module.exports = vendasModel;
