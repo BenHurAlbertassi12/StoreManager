@@ -7,13 +7,13 @@ solicitacao: async () => {
   },
 
   vendasById: async (id) => {
-    const resposta = await vendasModel.findById(id);
+    const vendaId = await vendasModel.findById(id);
 
-    if (resposta.length === 0) return { message: 'Sale not found' };
+    if (vendaId.length === 0) return { message: 'Sale not found' };
 
-    const vendas = await vendasModel.findById(id);
+    const sales = await vendasModel.findById([id]);
 
-    return vendas;
+    return sales;
   },
 };
 module.exports = serviceVendas;

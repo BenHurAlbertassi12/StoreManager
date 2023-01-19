@@ -1,11 +1,12 @@
 const express = require('express');
-const { findAll, controllerCreate } = require('../controllers/vendaController');
+const { findAll, controllerById } = require('../controllers/vendaController');
 // const { validator } = require('../middlewares/produtos.valudator');
 
 const router = express.Router();
 
 router.get('/', findAll);
-router.get('/:id', controllerCreate);
+router.get('/:id', controllerById);
+router.post('/');
 // console.log('loooooooooooooog aqui', controller);
 
 module.exports = router;
