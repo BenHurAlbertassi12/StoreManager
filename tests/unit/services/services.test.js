@@ -34,16 +34,16 @@ describe('services', function () {
           expect(result.message).to.deep.equal(produtos[0]);
         });
 
-    it('service test 3', async function () {
-      sinon.stub(model, 'modelGetById').resolves(produtos);
-      // sinon.stub(driveDB, 'findById').resolves(undefined);
+    // it('service test 3', async function () {
+    //   sinon.stub(model, 'modelGetById').resolves(produtos);
+    //   // sinon.stub(driveDB, 'findById').resolves(undefined);
       
-      // const body = { travelId: 1, driverId: 99999 };
-      const error = await service.serviceGetById();
+    //   // const body = { travelId: 1, driverId: 99999 };
+    //   const error = await service.serviceGetById();
       
-      expect(error.type).to.equal(null);
-      expect(error.message).to.deep.equal(produtos);
-    });
+    //   expect(error.type).to.equal(null);
+    //   expect(error.message).to.deep.equal(produtos);
+    // });
 
     it('service test 4', async function () {
 

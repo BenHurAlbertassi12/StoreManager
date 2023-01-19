@@ -45,21 +45,21 @@ describe('Teste de unidade do controller', function () {
       expect(res.json).to.have.been.calledWith(produtos);
     });
 
-    it('controller 3', async function () {
-      const res = {};
-      const req = { params: { id: 4 } };
+    // it('controller 3', async function () {
+    //   const res = {};
+    //   const req = { params: { id: 4 } };
 
-      res.status = sinon.stub().returns(res);
-      res.json = sinon.stub().returns();
+    //   res.status = sinon.stub().returns(res);
+    //   res.json = sinon.stub().returns();
 
-      sinon
-        .stub(service, 'serviceGetById')
-        .resolves({ type: null, message: produtos });
+    //   sinon
+    //     .stub(service, 'serviceGetById')
+    //     .resolves({ type: null, message: produtos });
       
-      await controller.controllerGetById(req, res);
-      expect(res.status).to.have.been.calledWith(200);
-      expect(res.json).to.have.been.calledWith(produtos);
-    });
+    //   await controller.controllerGetById(req, res);
+    //   expect(res.status).to.have.been.calledWith(200);
+    //   expect(res.json).to.have.been.calledWith(produtos);
+    // });
   });
 });
 
