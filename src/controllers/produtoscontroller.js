@@ -11,11 +11,13 @@ const errorMap = require('../middlewares/errorMap');
 
 const controllerGetById = async (req, res) => {
   const { id } = req.params;
-  const { type, message } = await service.serviceGetById(id);
+  const response = await service.serviceGetById(id);
 
-  if (type) return res.status(404).json({ message });
-
-  res.status(200).json(message);
+  if (response.message) {
+    res.status(404).json(response);
+  } else {
+    res.status(200).json(response);
+  }
 };
 
 const controllerCreate = async (req, res) => {
@@ -40,11 +42,14 @@ const controllerUP = async (req, res) => {
 
 const controllerRemove = async (req, res) => {
   const { id } = req.params;
-  const { error } = await service.removeById(id);
 
-  if (error) return res.status(404).json({ error });
+  const response = await service.removeById(id);
 
-  res.status(204).end();
+  if (response) {
+    res.status(404).json(response);
+  } else {
+    res.sendStatus(204);
+  }
 };
 
 module.exports = {

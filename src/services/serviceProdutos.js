@@ -17,14 +17,21 @@ const productsSchema = Joi.object({
       type: null, message: produtos,
   }; 
   };
-  
+
 const serviceGetById = async (id) => {
-  const result = await model.modelGetById(Number(id));
+  const prodtoId = await model.modelGetById(id);
+  if (prodtoId) return prodtoId;
 
-  if (!result) return { type: 'INVALID_VALUE', message: 'Product not found' };
-
-  return { type: null, message: result };
+  return { message: 'Product not found' };
 };
+
+// const serviceGetById = async (id) => {
+//   const result = await model.modelGetById(id);
+
+//   if (!result) return { type: 'INVALID_VALUE', message: 'Product not found' };
+
+//   return { type: null, message: result };
+// };
 
 const controllerCreate = async (name) => {
   const { error } = productsSchema.validate(name);
@@ -48,15 +55,13 @@ const upItem = async (id, name) => {
 };
 
 const removeById = async (id) => {
-  const itemId = await model.modelGetById(id);
+  const produtoById = await serviceGetById(id);
 
-  if (!itemId) return { type: 'DRIVER_NOT_FOUND', message: 'Product not found' };
+  if (produtoById.message) return produtoById;
 
   await model.modelRemove(id);
-  
-  return {};
 };
-// console.log('estou auiiiiiiiiiiiii', removeById());
+// console.log('estou aquiiiiiiiiiiiii', removeById());
 
 module.exports = {
   removeById,
